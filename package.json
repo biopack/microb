@@ -1,6 +1,6 @@
 {
     "name": "microb",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "description": "Another web framework but in Typescript :P",
     "keywords": [
         "Microb","mvc","framework","web"
