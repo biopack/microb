@@ -1,0 +1,22 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "*": [ "types/*" ]
+        },
+        "moduleResolution": "node",
+        "target": "es6",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "strictNullChecks": true,
+        "preserveConstEnums": true,
+        "declaration": true,
+        "declarationDir": "./types/",
+        "outDir": "./lib/"
+    }
+}

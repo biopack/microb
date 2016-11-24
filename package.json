@@ -1,0 +1,41 @@
+{
+    "name": "microb",
+    "version": "1.0.0-alpha.1",
+    "description": "Another web framework but in Typescript :P",
+    "keywords": [
+        "Microb","mvc","framework","web"
+    ],
+    "bugs": "https://github.com/biopack/microb/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/biopack/microb.git"
+    },
+    "license": "GPL-3.0",
+    "author": "scippio",
+    "main": "./lib/main.js",
+    "types": "./types/main.d.ts",
+    "scripts": {
+        "start": "gulp",
+        "watch": "gulp watch",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "app-root-path": "^2.0.1",
+        "eventemitter2": "^2.2.0",
+        "lodash": "^4.17.2",
+        "bluebird": "^3.4.6"
+    },
+    "devDependencies": {
+        "@types/gulp": "latest",
+        "@types/gulp-typescript": "latest",
+        "@types/app-root-path": "latest",
+        "@types/merge2": "latest",
+        "@types/eventemitter2": "latest",
+        "@types/lodash": "latest",
+        "@types/bluebird": "latest",
+        "gulp": "^3.9.1",
+        "gulp-typescript": "^3.1.3",
+        "typescript": "^2.0.9",
+        "merge2": "^1.0.2"
+    }
+}
