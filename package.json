@@ -1,6 +1,6 @@
 {
     "name": "microb",
-    "version": "1.0.0-alpha.3",
+    "version": "1.0.0-alpha.4",
     "description": "Another web framework but in Typescript :P",
     "keywords": [
         "Microb","mvc","framework","web"
@@ -33,6 +33,7 @@
         "@types/eventemitter2": "latest",
         "@types/lodash": "latest",
         "@types/bluebird": "latest",
+        "@types/node": "latest",
         "gulp": "^3.9.1",
         "gulp-typescript": "^3.1.3",
         "typescript": "^2.0.9",

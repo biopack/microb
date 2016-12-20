@@ -8,3 +8,5 @@ export { ParameterBag } from "./ParameterBag";
 export { Transmitter } from "./Transmitter";
 export { Route } from "./Route";
 export { Session } from "./Session";
+export { Environment } from "./Environment";
+export { Logger } from "./Logger";

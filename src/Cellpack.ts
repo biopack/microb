@@ -1,16 +1,21 @@
 
+import { Environment } from "./Environment"
 import { Transmitter } from "./Transmitter"
 import { Connection } from "./Connection"
 import * as Promise from "bluebird"
 
 export class Cellpack {
 
-    protected config: any
+    protected environment: Environment
     protected transmitter: Transmitter
+    //
+    protected config: any
 
-    constructor(config: any, transmitter: Transmitter){
-        this.config = config
+    constructor(environment: Environment, transmitter: Transmitter){
+        this.environment = environment
         this.transmitter = transmitter
+        // console.log(this.constructor.name)
+        // this.config = environment.get(this.class.name)
     }
 
     init(): Promise<void> { return Promise.resolve() }
