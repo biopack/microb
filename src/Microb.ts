@@ -43,6 +43,9 @@ export class Microb {
 
     start(): void {
         this.transmitter.emit("log.microb",`Microb starting...`)
+
+        this.environment = require(`${appRoot}/lib/config/config`)
+
         this.transmitter.emit("log.microb",`\tEnvironment: ${this.environment.get("environment")}`)
         /*
         // TODO checking && validate?
@@ -50,7 +53,6 @@ export class Microb {
         Object.keys(config).forEach((key, index, len) => {
             this.environment.set(key,config[key])
         })*/ // import * as Config from "lib/config/Config"
-        this.environment = require(`${appRoot}/lib/config/config`)
 
         // init cellpacks
         Promise.mapSeries<string,undefined>(Object.keys(this.environment.get('cellpacks')), (cellpackModuleName, index, len) => {
