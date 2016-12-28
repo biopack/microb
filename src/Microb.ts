@@ -56,7 +56,7 @@ export class Microb {
 
         // init cellpacks
         Promise.mapSeries<string,undefined>(Object.keys(this.environment.get('cellpacks')), (cellpackModuleName, index, len) => {
-            if(this.environment.get("dev") === true) this.transmitter.emit("log.microb",`\tLoading module: ${cellpackModuleName}`)
+            if(this.environment.get("debug")) this.transmitter.emit("log.microb",`\tLoading module: ${cellpackModuleName}`)
 
             let cellmodule = require(cellpackModuleName)
             //let cellpack = new (cellmodule.default)(config.cellpacks[cellpackModuleName], this.transmitter)
@@ -73,7 +73,7 @@ export class Microb {
             // process.exit(0)
 
             this.transmitter.emit("log.microb",`done.`)
-            if(this.environment.get("dev") === true) this.transmitter.emit("microb.loaded")
+            if(this.environment.get("debug")) this.transmitter.emit("microb.loaded")
         })
 
         /*
