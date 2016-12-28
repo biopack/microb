@@ -73,7 +73,7 @@ export class Microb {
             // process.exit(0)
 
             this.transmitter.emit("log.microb",`done.`)
-            if(this.environment.get("debug")) this.transmitter.emit("microb.loaded")
+            this.transmitter.emit("microb.loaded")
         })
 
         /*
