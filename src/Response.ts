@@ -2,6 +2,7 @@ import * as Stream from "stream"
 import * as Lodash from "lodash"
 //
 import { ParameterBag } from "./ParameterBag"
+import { Cookie } from "./Cookie"
 
 export const enum Status {
     OK = 200,
@@ -20,11 +21,15 @@ export class Response extends Stream.Writable {
     private _streamed: boolean = false
     //
     private _headers: ParameterBag // http headers
+    private _removeCookies: ParameterBag
     private _statusCode: number = Status.OK
     private _data: string = ""
 
     constructor(statusCodeOrResponse?: number | Response, data?: string){
         super()
+
+        this._headers = new ParameterBag()
+        this._removeCookies = new ParameterBag()
 
         if(statusCodeOrResponse !== undefined){
             if(Lodash.isNumber(statusCodeOrResponse))
@@ -39,6 +44,32 @@ export class Response extends Stream.Writable {
         this._statusCode = response.status
         this._data = response.data
     }
+
+    // cookies
+
+    setCookie(cookie: Cookie): Response {
+        this._headers.add("cookies",cookie)
+        return this
+    }
+
+    removeCookie(cookie: Cookie | string): Response {
+        let removeCookie = Lodash.isString(cookie) ? cookie : cookie.getName()
+        let cookies: Array<Cookie> = this._headers.get("cookies")
+        this._headers.remove("cookies")
+        cookies.forEach((cookie, index, arr) => { if(cookie.getName() !== removeCookie) this._headers.add("cookies",cookie) })
+        this._removeCookies.add("cookies",Lodash.isString(cookie) ? new Cookie(cookie,"") : cookie)
+        return this
+    }
+
+    getRemoveCookies(): Array<Cookie> {
+        return this._removeCookies.get("cookies",[])
+    }
+
+    getCookies(): Array<Cookie> {
+        return this._headers.get("cookies",[])
+    }
+
+    //
 
     get raw(): any {
         return this._raw

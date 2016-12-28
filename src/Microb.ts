@@ -18,7 +18,7 @@ export class Microb {
     private static microb: Microb
 
     // private cellpacks: ICellpacks = {}
-    private cellpacks: { [key: string]: Cellpack } = {}
+    private cellpacks: { [key: string]: any } = {}
     private transmitter: Transmitter
     private environment: Environment
     private log: Logger
@@ -29,8 +29,21 @@ export class Microb {
         // this.environment = new Environment()
     }
 
+    getTransmitter(): Transmitter {
+        return this.transmitter
+    }
+
+    getEnvironment(): Environment {
+        return this.environment
+    }
+
+    getCellpack(name: string): null | any {
+        return (this.cellpacks[name] === undefined ? null : this.cellpacks[name])
+    }
+
     start(): void {
         this.transmitter.emit("log.microb",`Microb starting...`)
+        this.transmitter.emit("log.microb",`\tEnvironment: ${this.environment.get("environment")}`)
         /*
         // TODO checking && validate?
         let config = require(`${appRoot}/config/microb`)
@@ -41,18 +54,24 @@ export class Microb {
 
         // init cellpacks
         Promise.mapSeries<string,undefined>(Object.keys(this.environment.get('cellpacks')), (cellpackModuleName, index, len) => {
-            this.transmitter.emit("log.microb",`\tLoading module: ${cellpackModuleName}`)
+            if(this.environment.get("dev") === true) this.transmitter.emit("log.microb",`\tLoading module: ${cellpackModuleName}`)
 
             let cellmodule = require(cellpackModuleName)
             //let cellpack = new (cellmodule.default)(config.cellpacks[cellpackModuleName], this.transmitter)
-            let cellpack = new (cellmodule.default)(this.environment, this.transmitter)
+            let cellpack = new (cellmodule.default)(this) //, this.environment, this.transmitter)
 
             return cellpack.init().then(() => {
                 this.cellpacks[cellpackModuleName] = cellpack
             })
         }).then(() => {
+            // this.environment.set("cellpacks",this.cellpacks)
+
+            // let cc = this.environment.get("cellpacks")
+            // cc["cellpack-session"].testicek()
+            // process.exit(0)
+
             this.transmitter.emit("log.microb",`done.`)
-            this.transmitter.emit("microb.loaded")
+            if(this.environment.get("dev") === true) this.transmitter.emit("microb.loaded")
         })
 
         /*
@@ -83,7 +102,10 @@ export class Microb {
             // let next = true
             let next = true
             Promise.mapSeries<string, boolean>(Object.keys(this.cellpacks), (cellpackModuleName, index, len) => {
+
                 let cellpack = this.cellpacks[cellpackModuleName]
+                cellpack.setMicrob(this)
+
                 if(this.environment.get('debug')) this.transmitter.emit('log.microb', `Request: ${cellpackModuleName}`)
                 if(next && typeof cellpack.request === "function"){
                     return cellpack.request(connection).then((returned: boolean) => {

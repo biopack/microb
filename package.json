@@ -1,6 +1,6 @@
 {
     "name": "microb",
-    "version": "1.0.0-alpha.4",
+    "version": "1.0.0-alpha.5",
     "description": "Another web framework but in Typescript :P",
     "keywords": [
         "Microb","mvc","framework","web"
@@ -23,7 +23,8 @@
         "app-root-path": "^2.0.1",
         "eventemitter2": "^2.2.0",
         "lodash": "^4.17.2",
-        "bluebird": "^3.4.6"
+        "bluebird": "^3.4.6",
+        "moment": "^2.17.1"
     },
     "devDependencies": {
         "@types/gulp": "latest",
