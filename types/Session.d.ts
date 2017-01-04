@@ -4,7 +4,7 @@ export interface sessionOptions {
     name?: string;
     expires?: string | number | null | Moment.Moment;
     path?: string;
-    domain?: string;
+    domain?: string | Array<string>;
     secure?: boolean;
     httponly?: boolean;
 }
@@ -17,13 +17,13 @@ export declare class Session extends ParameterBag {
     setup(options: sessionOptions): Session;
     setExpires(expires: undefined | string | number | null | Moment.Moment): Session;
     setPath(path: string | null): Session;
-    setDomain(domain: string | null): Session;
+    setDomain(domain: string | Array<string> | null): Session;
     setSecure(secure: boolean | null): Session;
     setHttponly(httponly: boolean | null): Session;
     getExpiresUnix(): number | void;
     getExpires(): number | null;
     getPath(): string | null;
-    getDomain(): string | null;
+    getDomain(): string | Array<string> | null;
     isSecure(): boolean | null;
     isHttponly(): boolean | null;
 }

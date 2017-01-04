@@ -7,7 +7,7 @@ export interface sessionOptions {
     name?: string
     expires?: string | number | null | Moment.Moment
     path?: string
-    domain?: string
+    domain?: string | Array<string>
     secure?: boolean
     httponly?: boolean
 }
@@ -17,7 +17,7 @@ export class Session extends ParameterBag {
     // private name: string | null   TODO: multiple sessions?
     private expires: number | null
     private path: string | null
-    private domain: string | null
+    private domain: string | Array<string> | null
     private secure: boolean | null
     private httponly: boolean | null
 
@@ -50,7 +50,7 @@ export class Session extends ParameterBag {
         return this
     }
 
-    setDomain(domain: string | null): Session {
+    setDomain(domain: string | Array<string> | null): Session {
         this.domain = domain
         return this
     }
@@ -77,7 +77,7 @@ export class Session extends ParameterBag {
         return this.path
     }
 
-    getDomain(): string | null {
+    getDomain(): string | Array<string> | null {
         return this.domain
     }
 
