@@ -25,6 +25,7 @@ export declare class Request {
     private _port;
     private _path;
     private _method;
+    private _ip;
     private _headers;
     private _attributes;
     private _query;
@@ -38,6 +39,7 @@ export declare class Request {
     port: number;
     path: string;
     method: Method;
+    ip: string;
     readonly headers: ParameterBag;
     readonly attributes: ParameterBag;
     readonly query: ParameterBag;

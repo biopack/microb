@@ -31,6 +31,7 @@ export class Request {
     private _port: number
     private _path: string
     private _method: Method
+    private _ip: string
 
     private _headers: ParameterBag // http headers
     private _attributes: ParameterBag // from route
@@ -68,6 +69,10 @@ export class Request {
 
     get method(): Method {
         return this._method
+    }
+
+    get ip(): string {
+        return this._ip
     }
 
     get headers(): ParameterBag {
@@ -118,5 +123,9 @@ export class Request {
 
     set method(method: Method){
         this._method = method
+    }
+
+    set ip(ip: string){
+        this._ip = ip
     }
 }

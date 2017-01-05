@@ -1,5 +1,5 @@
 
-// import * as Lodash from "lodash"
+import * as Lodash from "lodash"
 //
 import { Transmitter } from "./Transmitter"
 
@@ -20,6 +20,10 @@ export class Logger {
     }
 
     private log(event: string, log: string | Log): void {
-        console.log(`${event}: ${log}`)
+        if(Lodash.isString(log)){
+            console.log(`${event}: ${log}`)
+        } else {
+            if(log.type == 'error') console.error(`${event}: [${log.code}] ${log.msg}`)
+        }
     }
 }
