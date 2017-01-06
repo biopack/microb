@@ -16,14 +16,14 @@ export class Response extends Stream.Writable {
         NotFound: 404
     }
 
-    private _raw: any
-    private _stream: Stream.Writable
-    private _streamed: boolean = false
+    protected _raw: any
+    protected _stream: Stream.Writable
+    protected _streamed: boolean = false
     //
-    private _headers: ParameterBag // http headers
-    private _removeCookies: ParameterBag
-    private _statusCode: number = Status.OK
-    private _data: string = ""
+    protected _headers: ParameterBag // http headers
+    protected _removeCookies: ParameterBag
+    protected _statusCode: number = Status.OK
+    protected _data: string = ""
 
     constructor(statusCodeOrResponse?: number | Response, data?: string){
         super()

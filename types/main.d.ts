@@ -2,6 +2,7 @@ export { Microb } from "./Microb";
 export { Cellpack } from "./Cellpack";
 export { Request } from "./Request";
 export { Response } from "./Response";
+export { ResponseJSON } from "./ResponseJSON";
 export { Connection } from "./Connection";
 export { ParameterExpense } from "./ParameterExpense";
 export { ParameterBag } from "./ParameterBag";

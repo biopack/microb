@@ -47,4 +47,6 @@ export declare class Request {
     readonly server: ParameterBag;
     readonly files: ParameterBag;
     readonly cookies: ParameterBag;
+    isMethod(methodName: string): boolean;
+    isXmlHttpRequest(): boolean;
 }
