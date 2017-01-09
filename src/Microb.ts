@@ -1,5 +1,5 @@
-
 import * as appRoot from "app-root-path"
+import * as Promise from "bluebird"
 
 import { Environment } from "./Environment"
 import { Cellpack } from "./Cellpack"
@@ -7,17 +7,9 @@ import { Transmitter } from "./Transmitter"
 import { Connection } from "./Connection"
 import { Logger } from "./Logger"
 
-import * as Promise from "bluebird"
-
-// interface ICellpacks {
-    // [key: string]: Cellpack
-// }
-
 export class Microb {
 
     private static microb: Microb
-
-    // private cellpacks: ICellpacks = {}
     private cellpacks: { [key: string]: any } = {}
     private transmitter: Transmitter
     private environment: Environment
@@ -26,7 +18,6 @@ export class Microb {
     constructor(){
         this.transmitter = new Transmitter()
         this.log = new Logger(this.transmitter)
-        // this.environment = new Environment()
     }
 
     getTransmitter(): Transmitter {
@@ -113,7 +104,9 @@ export class Microb {
                     return cellpack.request(connection).then((returned: boolean) => {
                         next = returned
                         return next
-                    }) // call request from cellpack
+                    }).then((err: any) => { // call request from cellpack
+                        this.transmitter.emit('log.microb', `ERROR in cellpack: ${cellpackModuleName} when request() call: ${err}`)
+                    })
                 } else return next
             }).then((t) => {
                 // console.log(t)

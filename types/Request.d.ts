@@ -26,6 +26,7 @@ export declare class Request {
     private _path;
     private _method;
     private _ip;
+    private _protocol;
     private _headers;
     private _attributes;
     private _query;
@@ -47,6 +48,8 @@ export declare class Request {
     readonly server: ParameterBag;
     readonly files: ParameterBag;
     readonly cookies: ParameterBag;
+    protocol: string;
+    readonly uri: string;
     isMethod(methodName: string): boolean;
     isXmlHttpRequest(): boolean;
 }

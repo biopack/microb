@@ -32,6 +32,7 @@ export class Request {
     private _path: string
     private _method: Method
     private _ip: string
+    private _protocol: string
 
     private _headers: ParameterBag // http headers
     private _attributes: ParameterBag // from route
@@ -103,6 +104,20 @@ export class Request {
         return this._cookies
     }
 
+    get protocol(): string {
+        return this._protocol
+    }
+
+    get uri(): string {
+        let qs = this._query.all()
+        let query = ""
+        Object.keys(qs).forEach((qName,i,a) => {
+            if(query !== "") query += "&"
+            query += `${qName}=${qs[qName]}`
+        })
+        return `${this._protocol}://${this._host}${this._path}?${query}`
+    }
+
     //
 
     set raw(request: any){
@@ -127,6 +142,10 @@ export class Request {
 
     set ip(ip: string){
         this._ip = ip
+    }
+
+    set protocol(protocol: string){
+        this._protocol = protocol
     }
 
     isMethod(methodName: string): boolean {
