@@ -33,6 +33,7 @@ export class Request {
     private _method: Method
     private _ip: string
     private _protocol: string
+    private _agent: string
 
     private _headers: ParameterBag // http headers
     private _attributes: ParameterBag // from route
@@ -108,6 +109,10 @@ export class Request {
         return this._protocol
     }
 
+    get agent(): string {
+        return this._agent
+    }
+
     get uri(): string {
         let qs = this._query.all()
         let query = ""
@@ -146,6 +151,10 @@ export class Request {
 
     set protocol(protocol: string){
         this._protocol = protocol
+    }
+
+    set agent(agent: string){
+        this._agent = agent
     }
 
     isMethod(methodName: string): boolean {
