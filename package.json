@@ -1,6 +1,6 @@
 {
     "name": "microb",
-    "version": "1.0.0-alpha.17",
+    "version": "1.0.0-alpha.18",
     "description": "Another web framework but in Typescript :P",
     "keywords": [
         "Microb","mvc","framework","web"
@@ -12,8 +12,8 @@
     },
     "license": "GPL-3.0",
     "author": "scippio",
-    "main": "./lib/main.js",
-    "types": "./types/main.d.ts",
+    "main": "lib/main.js",
+    "types": "types/main.d.ts",
     "scripts": {
         "start": "gulp",
         "watch": "gulp watch",

@@ -4,12 +4,22 @@ import { ParameterBag } from "./ParameterBag";
 import { Cookie } from "./Cookie";
 export declare const enum Status {
     OK = 200,
+    Created = 201,
+    Accepted = 202,
+    Found = 302,
+    Forbidden = 403,
     NotFound = 404,
+    InternalServerError = 500,
 }
 export declare class Response extends Stream.Writable {
     static Status: {
         OK: number;
+        Created: number;
+        Accepted: number;
+        Found: number;
+        Forbidden: number;
         NotFound: number;
+        InternalServerError: number;
     };
     protected _raw: any;
     protected _stream: Stream.Writable;

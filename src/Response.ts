@@ -6,14 +6,24 @@ import { Cookie } from "./Cookie"
 
 export const enum Status {
     OK = 200,
-    NotFound = 404
+    Created = 201,
+    Accepted = 202,
+    Found = 302,
+    Forbidden = 403,
+    NotFound = 404,
+    InternalServerError = 500
 }
 
 export class Response extends Stream.Writable {
 
-    static Status = {
+    public static Status = {
         OK: 200,
-        NotFound: 404
+        Created: 201,
+        Accepted: 202,
+        Found: 302,
+        Forbidden: 403,
+        NotFound: 404,
+        InternalServerError: 500
     }
 
     protected _raw: any
