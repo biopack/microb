@@ -8,7 +8,7 @@ export class ResponseJSON extends Response {
 
         if(!Lodash.isUndefined(statusCodeOrData)){
             if(Lodash.isNumber(statusCodeOrData)) this._statusCode = statusCodeOrData
-            else this._raw = data // this._data = JSON.stringify(statusCodeOrData)
+            else this._raw = statusCodeOrData // this._data = JSON.stringify(statusCodeOrData)
         }
         if(data !== undefined) this._raw = data //this._data = JSON.stringify(data)
 
