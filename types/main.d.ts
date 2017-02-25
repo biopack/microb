@@ -11,4 +11,4 @@ export { Route } from "./Route";
 export { Cookie } from "./Cookie";
 export { Session } from "./Session";
 export { Environment } from "./Environment";
-export { Logger } from "./Logger";
+export { Logger, Log } from "./Logger";

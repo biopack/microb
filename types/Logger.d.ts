@@ -3,6 +3,7 @@ export interface Log {
     type?: string;
     msg?: string;
     code?: number;
+    stack?: any;
 }
 export declare class Logger {
     private transmitter;

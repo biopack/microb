@@ -1,6 +1,6 @@
 {
     "name": "microb",
-    "version": "1.0.0-alpha.21",
+    "version": "1.0.0-alpha.22",
     "description": "Another web framework but in Typescript :P",
     "keywords": [
         "Microb","mvc","framework","web"
@@ -16,7 +16,6 @@
     "types": "types/main.d.ts",
     "scripts": {
         "build": "gulp",
-        "start": "gulp",
         "watch": "gulp watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

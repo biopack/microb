@@ -7,6 +7,7 @@ export interface Log {
     type?: string
     msg?: string
     code?: number
+    stack?: any
 }
 
 export class Logger {
