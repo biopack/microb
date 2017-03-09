@@ -104,7 +104,7 @@ export class Microb {
                     return cellpack.request(connection).then((returned: boolean) => {
                         next = returned
                         return next
-                    }).then((err: any) => { // call request from cellpack
+                    }).catch((err: any) => { // call request from cellpack
                         this.transmitter.emit('log.microb', `ERROR in cellpack: ${cellpackModuleName} when request() call: ${err}`)
                     })
                 } else return next
